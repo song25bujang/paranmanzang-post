@@ -9,10 +9,13 @@ server:
 spring:
   datasource:
     driver-class-name : com.mysql.cj.jdbc.Driver
-    url : jbbc:mysql://localhost:3306/ncprefinal
+    url : jdbc:mysql://127.17.0.2:3306/ncprefinal
     username : root
     password : 1234
   servlet:
     multipart:
       max-file-size: 100MB
       max-request-size: 120MB
+  jpa:
+    hibernate:
+      ddl-auto: update

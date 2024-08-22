@@ -4,31 +4,31 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Builder;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity
 @Data
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Entity
 public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //jpa pk
     private Long id;
     private Long writerId;
     private String title;
-    private String text;
+    private String content;
     private Long hits;
     private LocalDateTime createdDate = LocalDateTime.now();
     private LocalDateTime modifiedDate;
     @Builder
-    public Board(String title,String text,Long writerId,Long hits){
+    public Board(String title,String content,Long writerId,Long hits){
         this.title=title;
-        this.text=text;
+        this.content=content;
         this.writerId=writerId;
         this.hits=hits;
     }

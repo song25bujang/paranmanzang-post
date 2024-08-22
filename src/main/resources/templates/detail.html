@@ -5,6 +5,32 @@
     <title>detail</title>
 </head>
 <body>
-detail
+<h2 th:text="${board.title}"></h2>
+<h3 th:text="${board.content}"></h3>
+<h3 th:text="${board.writerId}"></h3>
+<h4 th:text="${board.hits}"></h4>
+<h4 th:text="${board.createdDate}"></h4>
+
+<a th:href="@{|/board/updateOne/${board.id}|}">수정</a>
+<button type="button" onclick="deletePost();">삭제</button>
+<a th:href="@{|/|}">목록으로</a>
 </body>
+<script>
+    function deletePost(){
+        const boardId = [[${board.id}]];
+        if(!confirm(boardId+ '번 게시글을 삭제할까요?')){
+            return false; //취소
+        }
+        const formHtml = `
+            <form id="deleteForm" action="/board/deleteOne" method="post">
+                <input type="hidden" id="boardId" name="boardId" value="${boardId}"/>
+            </form>
+        `;
+        const doc = new DOMParser().parseFromString(formHtml, 'text/html');
+        const form = doc.body.firstChild;
+        document.body.append(form);
+        document.getElementById('deleteForm').submit();
+    }
+
+</script>
 </html>

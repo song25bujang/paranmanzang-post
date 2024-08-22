@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>update</title>
+</head>
+<body>
+    <form th:action="@{'/board/updateOne/'+${boardId}}" th:object="${boardtoupdate}" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <td>글번호</td>
+                    <td th:text="${boardId}"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="title">제목수정</label>
+                        <input type="text" id="title" th:field="*{title}" th:value="${boardtoupdate.title}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="content">내용수정</label>
+                        <input type="text" id="content" th:field="*{content}" th:value="${boardtoupdate.content}"/>
+                    </td>
+                </tr>
+                <button type="submit" onclick="">수정 완료</button>
+            </tbody>
+        </table>
+    </form>
+<!--<h2 th:text="${board.title}"></h2>-->
+<!--<h3 th:text="${board.content}"></h3>-->
+<!--<h3 th:text="${board.writerId}"></h3>-->
+<!--<h4 th:text="${board.hits}"></h4>-->
+<!--<h4 th:text="${board.createdDate}"></h4>-->
+
+<!--<a th:href="@{|/board/updateOne/${board.id}|}">수정</a>-->
+<!--<button type="button" onclick="updatePost();">수정 완료</button>-->
+<!--<a th:href="@{|/board/updateOne/${boardtoupdate.id}|}">수정 완료</a>-->
+<!--<a th:href="@{|/board/showOne/${boardtoupdate.id}|}">목록으로</a>-->
+</body>
+<script>
+
+</script>
+</html>

@@ -12,14 +12,10 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@NoArgsConstructor
 public class BoardService {
     @Autowired
     private BoardRepository boardRepository;
 
-    public BoardService(BoardRepository boardRepository) {
-        this.boardRepository = boardRepository;
-    }
 
     public List<Board> showAll(){
         List<Board> boardlist = boardRepository.findAll();
@@ -35,11 +31,13 @@ public class BoardService {
         return boardbywriter;
     }
 
-    public void add(Board b) {
-        boardRepository.save(b);
+    public Long add(BoardDTO boardDTO) {
+        Board boardEntity = boardDTO.toEntity();
+        return boardRepository.save(boardEntity).getId();
     }
     public void deleteOne(Long boardid) {
         boardRepository.deleteById(boardid);
     }
+
 
 }
