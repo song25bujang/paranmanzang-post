@@ -76,10 +76,8 @@ public class BoardController {
     public String updateResponsePage(@PathVariable Long boardId,
                                      @ModelAttribute BoardDTO newboard){
         //ModelAttribute 로 input
-        //더티체킹?
-        System.out.println(newboard.getTitle());
-        System.out.println(newboard.getContent());
-
+        //JPA의 update방법 - 더티체킹
+        boardService.modifyBoard(boardId,newboard);
         return "redirect:/board/showOne/"+boardId;
     }
 

@@ -3,6 +3,7 @@ package com.paranmanzang.post.service;
 import com.paranmanzang.post.DTO.BoardDTO;
 import com.paranmanzang.post.Entity.Board;
 import com.paranmanzang.post.repository.BoardRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -38,6 +39,16 @@ public class BoardService {
     public void deleteOne(Long boardid) {
         boardRepository.deleteById(boardid);
     }
+    @Transactional
+    public Board modifyBoard(Long boardId,BoardDTO boardDTO){
+        Board newBoard = boardRepository.findById(boardId)
+                .orElseThrow(()->{
+                    return new IllegalArgumentException("해당 보드가 없음.");
+                });
 
+        newBoard.setTitle(boardDTO.getTitle());
+        newBoard.setContent(boardDTO.getContent());
+        return newBoard;
+    }
 
 }

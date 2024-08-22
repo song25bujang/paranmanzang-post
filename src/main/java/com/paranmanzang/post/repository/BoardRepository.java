@@ -1,6 +1,5 @@
 package com.paranmanzang.post.repository;
 
-import com.paranmanzang.post.DTO.BoardDTO;
 import com.paranmanzang.post.Entity.Board;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
