@@ -1,8 +1,8 @@
 package com.paranmanzang.post.controller;
 
-import com.paranmanzang.post.DTO.BoardDTO;
-import com.paranmanzang.post.Entity.Board;
-import com.paranmanzang.post.repository.BoardRepository;
+import com.paranmanzang.post.model.domain.BoardModel;
+import com.paranmanzang.post.model.entity.Board;
+import com.paranmanzang.post.model.repository.BoardRepository;
 import com.paranmanzang.post.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,11 +43,11 @@ public class BoardController {
     }
     @GetMapping("/board/write")
     public String writePage(Model model){
-        model.addAttribute("emptyBoard",new BoardDTO());
+        model.addAttribute("emptyBoard",new BoardModel());
         return "board/write";
     }
     @PostMapping("/board/write")
-    public String writeBoard(BoardDTO boardDTO){
+    public String writeBoard(BoardModel boardDTO){
         Long nowAddPostPK = boardService.add(boardDTO);
         return "redirect:/board/showOne/"+nowAddPostPK;
     }
@@ -74,7 +74,7 @@ public class BoardController {
     @PostMapping("/board/updateOne/{boardId}")
     @ResponseBody
     public String updateResponsePage(@PathVariable Long boardId,
-                                     @ModelAttribute BoardDTO newboard){
+                                     @ModelAttribute BoardModel newboard){
         //ModelAttribute 로 input
         //JPA의 update방법 - 더티체킹
         boardService.modifyBoard(boardId,newboard);

@@ -24,7 +24,7 @@
                         <input type="text" id="content" th:field="*{content}" th:value="${boardtoupdate.content}"/>
                     </td>
                 </tr>
-                <button type="submit" onclick="">수정 완료</button>
+                <button id="submitId" type="submit" onclick=myClickFunc() oncontextmenu="rightClick()">수정 완료</button>
             </tbody>
         </table>
     </form>
@@ -40,6 +40,12 @@
 <!--<a th:href="@{|/board/showOne/${boardtoupdate.id}|}">목록으로</a>-->
 </body>
 <script>
-
+    function myClickFunc(){
+        alert("수정 완료!");
+        document.getElementById("submitId").style.color="blue";
+    }
+    function rightClick(){
+        alert("오른쪽 버튼 클릭");
+    }
 </script>
 </html>

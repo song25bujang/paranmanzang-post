@@ -141,7 +141,7 @@
             <tr th:unless="${#lists.isEmpty(boardList)}">
                 <td th:text="${board.id}"></td>
                 <td class="custom-hover fromLeft" >
-                    <a th:href="@{|/board/showOne/${board.id}|}" th:text="${board.title}">보기</a>
+                    <a th:href="@{|/board/showOne/${board.id}|}" th:text="${board.title}" onclick=boardclick()>보기</a>
                 </td>
     <!--            <td th:text="${commentCntMap[board.id]}"></td>  &lt;!&ndash;댓글 수  ??&ndash;&gt;-->
     <!--            <td th:text="${nicknameMap[board.id]}"></td>-->
@@ -151,7 +151,11 @@
     <p class="text-center"><a th:href="@{/board/write}">새 글 등록</a></p>
 </div>
 
-<!-- Bootstrap JS CDN 링크 -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 </body>
+<script>
+    function boardclick(){
+        alert("게시글 클릭");
+    }
+</script>
 </html>

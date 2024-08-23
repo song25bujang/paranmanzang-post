@@ -5,11 +5,19 @@
     <title>detail</title>
 </head>
 <body>
-<h2 th:text="${board.title}"></h2>
-<h3 th:text="${board.content}"></h3>
-<h3 th:text="${board.writerId}"></h3>
-<h4 th:text="${board.hits}"></h4>
-<h4 th:text="${board.createdDate}"></h4>
+<div th:object="${board}">
+    <h3 th:text="*{title}"></h3>
+    <p class="text-muted" th:text="*{content}"></p>
+    <h3 th:text="*{writerId}"></h3>
+    <h4 th:text="*{createdDate}"></h4>
+    <h5 th:text="*{hits}"></h5>
+</div>
+
+<!--<h2 th:text="${board.title}"></h2>-->
+<!--<h3 th:text="${board.content}"></h3>-->
+<!--<h3 th:text="${board.writerId}"></h3>-->
+<!--<h4 th:text="${board.hits}"></h4>-->
+<!--<h4 th:text="${board.createdDate}"></h4>-->
 
 <a th:href="@{|/board/updateOne/${board.id}|}">수정</a>
 <button type="button" onclick="deletePost();">삭제</button>

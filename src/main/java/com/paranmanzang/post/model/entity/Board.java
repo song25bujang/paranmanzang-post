@@ -1,16 +1,12 @@
-package com.paranmanzang.post.Entity;
-
+package com.paranmanzang.post.model.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
-import org.springframework.cglib.core.Local;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,7 +20,9 @@ public class Board {
     private Long writerId;
     private String title;
     private String content;
-    private Long hits;
+    @Builder.Default
+    private Long hits = 0L;
+    @Builder.Default
     private LocalDateTime createdDate = LocalDateTime.now();
     private LocalDateTime modifiedDate;
     @Builder

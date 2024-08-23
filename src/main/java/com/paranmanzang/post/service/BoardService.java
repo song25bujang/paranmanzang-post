@@ -1,11 +1,9 @@
 package com.paranmanzang.post.service;
 
-import com.paranmanzang.post.DTO.BoardDTO;
-import com.paranmanzang.post.Entity.Board;
-import com.paranmanzang.post.repository.BoardRepository;
+import com.paranmanzang.post.model.domain.BoardModel;
+import com.paranmanzang.post.model.entity.Board;
+import com.paranmanzang.post.model.repository.BoardRepository;
 import jakarta.transaction.Transactional;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +30,7 @@ public class BoardService {
         return boardbywriter;
     }
 
-    public Long add(BoardDTO boardDTO) {
+    public Long add(BoardModel boardDTO) {
         Board boardEntity = boardDTO.toEntity();
         return boardRepository.save(boardEntity).getId();
     }
@@ -40,7 +38,7 @@ public class BoardService {
         boardRepository.deleteById(boardid);
     }
     @Transactional
-    public Board modifyBoard(Long boardId,BoardDTO boardDTO){
+    public Board modifyBoard(Long boardId, BoardModel boardDTO){
         Board newBoard = boardRepository.findById(boardId)
                 .orElseThrow(()->{
                     return new IllegalArgumentException("해당 보드가 없음.");
