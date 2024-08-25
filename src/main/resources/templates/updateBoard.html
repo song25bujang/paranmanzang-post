@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>updateBoard</title>
+    <style>
+        .header{
+            max-width: 560px;
+            align-content: center;
+            background-color: lightskyblue;
+        }
+        .container{
+            max-width: 560px;
+            align-content: center;
+            background-color: lightslategray;
+        }
+        .h2{
+            text-align: center;
+            text-overline-color: wheat;
+        }
+    </style>
+</head>
+<body>
+    <form th:action="@{/updateBoard/{param1}(param1=${boardOne.id})}" method="post" th:object="${boardOne}">
+    <div class="container">
+        <label for="title">제목수정</label>
+        <input type="text" id="title" th:field="*{title}" th:value="*{title}">
+    </div>
+        <div>
+            <label for="content">내용수정</label>
+            <input type="text" id="content" th:field="*{content}" th:value="*{content}">
+        </div>
+    <div>
+        <button type="submit">수정완료</button>
+    </div>
+    </form>
+</body>
+</html>

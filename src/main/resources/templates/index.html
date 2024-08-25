@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <th>글번호</th>
+                <th>제목</th>
+                <th>글쓴이</th>
+                <th>쓴 날짜</th>
+            </tr>
+            <tr th:if="${boardList.size()} != 0" th:each = "board : ${boardList}">
+                <td th:text="${board.id}"></td>
+                <td><a th:href="@{/detail/{param1}(param1=${board.id})}" th:text="${board.title}"></a></td>
+                <td th:text="${board.writerId}"></td>
+                <td th:text="${board.createDate}"></td>
+            </tr>
+            <tr>
+                <td th:unless="${boardList.size()} != 0">게시된 글이 없습니다.</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <a th:href="@{/writeBoard}">글쓰기</a>
+    </div>
+</body>
+</html>

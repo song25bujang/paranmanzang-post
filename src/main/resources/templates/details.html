@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>detail Page</title>
+</head>
+<body>
+<div>
+    <h3>제목</h3>
+    <h3 th:text="${boardOne.title}">제목</h3>
+    <h2>글쓴이</h2>
+    <h2 th:text="${boardOne.writerId}"></h2>
+    <h2>내용</h2>
+    <p th:text="${boardOne.content}">내용</p>
+</div>
+<div>
+    <a th:href="@{/updateBoard/{param1}(param1=${boardOne.id})}">수정하기</a>
+    <a th:href="@{/deleteBoard/{param1}(param1=${boardOne.id})}">삭제하기</a>
+    <a th:href="@{/}">목록으로</a>
+</div>
+
+</body>
+</html>
